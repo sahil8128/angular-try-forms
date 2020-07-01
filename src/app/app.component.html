@@ -1,4 +1,4 @@
-<div class="container-fluid col-sm-4 outer">
+<div class="container-fluid col-6 outer">
     <form class="inner" [formGroup] = "registrationForm"> 
         <div class="form-group">
             <label>Username : </label>
@@ -23,13 +23,16 @@
             </div>
             <div class="form-group">
                <label>Post Code : </label>
-               <input formControlName = "user_postCode" type="email" class="form-control">
+               <input formControlName = "user_postCode" type="number" class="form-control">
             </div>
         </div>
-        <div style="text-align:center">
-            <button class="btn btn-primary"type="submit">Submit Details</button>
+        <div>
+            <button class="btn btn-primary" type="submit" (click)="submitForm()">Submit Details</button>
+            <button class="btn btn-warning ml-3" type="button" (click)="loadAllData()">Load All Data</button>
+            <button class="btn btn-secondary ml-3" type="button" (click)="loadFewData()">Load Few Data</button>
+            <button class="btn btn-danger ml-3" type="button" (click)="resetForm()">Reset Form</button>
         </div>
     </form>
 </div>
 
-<!-- {{registrationForm.value | json}} -->
+{{registrationForm.value | json}}
