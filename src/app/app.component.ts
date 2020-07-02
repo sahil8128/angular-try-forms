@@ -28,7 +28,7 @@ export class AppComponent  {
     })
   });
 
-  // ----Using FormGroup method to create model for the Form---->
+  // ----Using FormGroup method to create model for the Form ---->
 
   // registrationForm = new FormGroup({
   //   user_name : new FormControl('Sahil'),
