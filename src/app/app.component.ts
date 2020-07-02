@@ -1,5 +1,5 @@
 import { Component, VERSION } from '@angular/core';
-import { FormGroup,FormControl,FormBuilder} from '@angular/forms';
+import { FormGroup,FormControl,FormBuilder,Validators} from '@angular/forms';
 
 @Component({
   selector: 'my-app',
@@ -10,11 +10,15 @@ export class AppComponent  {
 
   constructor(private fb : FormBuilder){}
 
+  get _userName(){
+    return this.registrationForm.get('user_name');
+  }
+
 
   // ----Using FormBuilder method to create model for the Form---->
 
   registrationForm = this.fb.group({
-    user_name : ['Sahil'],
+    user_name : ['',[Validators.required,Validators.minLength(5)]],
     user_password  : [''],
     confirm_password : [''],
     user_address : this.fb.group({

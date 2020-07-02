@@ -1,9 +1,16 @@
 <div class="container-fluid col-6 outer">
     <form class="inner" [formGroup] = "registrationForm"> 
+
         <div class="form-group">
             <label>Username : </label>
-            <input formControlName = "user_name" type="text" class="form-control">
+            <input [class.is-invalid]="_userName.invalid && _userName.touched" formControlName = "user_name" type="text" class="form-control">
+            <!-- <small [class.d-none]="_userName.valid || _userName.untouched" class="text-danger">UserName is Required</small> -->
+            <div *ngIf="_userName.invalid && _userName.touched">
+                <small *ngIf="_userName.errors?.required" class="text-danger">UserName is Required</small>
+                <small *ngIf="_userName.errors?.minlength" class="text-danger">UserName should be minimum 5 letters long</small>
+            </div>
         </div>
+        <!--  _userName used above is getter for registrationForm.get('user_name') -->
         <div class="form-group">
             <label>Password : </label>
             <input formControlName = "user_password" type="password" class="form-control">
@@ -30,9 +37,8 @@
             <button class="btn btn-primary" type="submit" (click)="submitForm()">Submit Details</button>
             <button class="btn btn-warning ml-3" type="button" (click)="loadAllData()">Load All Data</button>
             <button class="btn btn-secondary ml-3" type="button" (click)="loadFewData()">Load Few Data</button>
-            <button class="btn btn-danger ml-3" type="button" (click)="resetForm()">Reset Form</button>
+            <button class="btn btn-danger ml-3" type="button" (click)="resetForm()">Reset</button>
         </div>
     </form>
 </div>
-
 {{registrationForm.value | json}}
